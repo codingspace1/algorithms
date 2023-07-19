@@ -3,28 +3,25 @@
 
 using namespace std;
 
+//compile using g++ --std=c++14 -o vect vectors_test.cpp
+
+void display(vector<float> value)
+{
+     for(int i =0; i<value.size(); i++)
+    {
+        cout<<value[i]<<endl;
+
+    }
+
+}
+
 int main()
 {
-    vector<int> a;
 
+    vector<float>reps = {1.1,2.0,4.5};
 
-    for(int i=0; i<=7; i++)
-    {
-        a.push_back(i);
-    }
-    cout<<"vector details: "<<endl;
-    cout<<"Size: "<<a.size()<<endl;
-    cout<<"Max size: "<<a.max_size()<<endl;
-    cout<<"Capacity: "<<a.capacity()<<endl;
-    cout<<"Is empty: "<<a.empty()<<endl;
-
-
-    cout<<"Display elements"<<endl;
-    for(int i =0; i<=7; i++)
-    {
-        cout<<a[i]<<endl;
-
-    }
+    cout<<"Display elements from a function"<<endl;
+    display(reps);
 
     return 0;
 
