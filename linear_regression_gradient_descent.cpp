@@ -4,14 +4,43 @@
 
 using namespace std;
 
-void lin_reg(vector<float> in, vector<float> out)
+vector <float> lin_reg(vector<float> X, vector<float> y)
 {
-    // for(int i =0; i<in.size(); i++)
-    // {
+   float  b = -520.0;
+   float  m = 600.0;
+   float lr = 0.001;
+   int epochs = 500;
+   vector<float> out_parameters;
+   
 
-    // }
-    cout<<"Input data size: "<<in.size()<<endl;
-    cout<<"Output data size: "<<out.size()<<endl;
+   for(int i = 0; i<epochs; i++)
+   {
+    int cost = 0;
+    int slope_m = 0;
+    int slope_b = 0;
+
+    for(int j = 0; j<X.size(); j++)
+    {
+        slope_b = slope_b -(2*(y[j]-(m*X[j])-b));
+        slope_m = slope_m -(2* (y[j]- (m*X[j]-b))) * X[j];
+        cost = cost + pow((y[j] - m*X[j] - b),2);
+
+    }
+    b = b-(lr * slope_b);
+    m = m-(lr* slope_m);
+    // cout<<"Interation number: "<<i<<endl;
+    // cout<<"New b: "<<b<<endl;
+    // cout<<"New m: "<<m<<endl;
+    // cout<<"#############################"<<endl;
+
+   }
+   out_parameters.push_back(b);
+   out_parameters.push_back(m);
+
+   return out_parameters;
+
+    
+
 }
 
 
@@ -41,34 +70,12 @@ int main()
    vector<float> y = {-34.32, -9.42, -19.09, 20.44, 27.76, -2.91, -14.2, 5.4, -26.43, -34.91, 37.34, 12.85, 25.03, -18.96, -23.47, 37.78, 6.7, -5.57, -49.22, 15.95, -42.97, 6.09, -25.32, 62.82, 12.49, -32.71, -18.83, -29.39, -28.69, 4.39, 46.35, 24.39, 37.98, -34.58, -61.87, -46.44, -6.89, 39.7, -35.24, 8.37, -39.68, 8.27, -4.41, -3.01, 57.82, 24.65, 18.11, -52.28, 35.92, 15.84, 24.01, -25.12, -43.93, 17.39, 15.03, 37.83, 6.33, 5.07, -5.57, 19.84, 7.04, -18.94, 34.8, -57.14, 31.05, -75.73, -44.31, 21.24, -0.19, -28.57, -7.39, 25.22, 32.54, 0.29, -18.64, 39.35, 2.54, -48.63, 54.28, -10.22, -5.67, 23.46, -0.07, 5.63, -9.69, -44.66, 32.71, 18.12, -16.14, 45.04, 22.75, 37.11, 12.48, -35.85, -28.64, -27.98, 64.18, -60.72, 22.23, -2.4};
 
    //y = mx + b
-   float  b = -520.0;
-   float  m = 600.0;
-   float lr = 0.001;
-   int epochs = 500;
+
+   vector<float> trained_parameter = lin_reg(X,y);
    
-
-   for(int i = 0; i<epochs; i++)
-   {
-    int cost = 0;
-    int slope_m = 0;
-    int slope_b = 0;
-
-    for(int j = 0; j<X.size(); j++)
-    {
-        slope_b = slope_b -(2*(y[j]-(m*X[j])-b));
-        slope_m = slope_m -(2* (y[j]- (m*X[j]-b))) * X[j];
-        cost = cost + pow((y[j] - m*X[j] - b),2);
-
-    }
-    b = b-(lr * slope_b);
-    m = m-(lr* slope_m);
-    cout<<"Interation number: "<<i<<endl;
-    cout<<"New b: "<<b<<endl;
-    cout<<"New m: "<<m<<endl;
-    cout<<"#############################"<<endl;
-
-   }
-
+   cout<<"Trained Paramters"<<endl;
+   cout<<"b: "<<trained_parameter[0]<<endl;
+   cout<<"m: "<<trained_parameter[1]<<endl;
 
 
    //lin_reg(input,output);
