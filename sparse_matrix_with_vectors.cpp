@@ -3,9 +3,9 @@ This program checks if a given matrix is sparse or not
 i.e in a spaarse matrix zero valued elements are much more as compared to no zero values elements
 here if zero valued elemts are more than the 50% size of the matrix, we will call it a sparse matrix
 */
-#include<iostream>
+#include<iostream> ///for I/O operations
 #include<vector>
-#include<cassert>
+#include<cassert> /// for assert
 
 /*
 counts the number of  zero valued elements
@@ -44,16 +44,36 @@ void display(std::vector<std::vector<int>> vect)
 
 }
 
-static void tests()
+void test1()
 {
-    std::vector<std::vector<int>> vect1 = {{1, 0, 0, 1}, {0, 1, 0, 2}, {1, 0, 1, 4}}; 
-    std::vector<std::vector<int>> vect2 = {{1, 1, 1, 0}, {0, 1, 0, 2}, {1, 1, 1, 1}}; 
-    std::vector<std::vector<int>> vect3 = {{0, 0, 0, 1}, {0, 0, 0, 2}, {0, 1, 0, 4}};
+    std::vector<std::vector<int>> vect1 = {{1, 0, 0, 1}, {0, 1, 0, 2}, {1, 0, 1, 4}};
+    int expected_ans = 0;
+    int derived_ans = is_sparse_matrix(vect1);
+    std::cout<<"Test #1: ";
+    assert(derived_ans == expected_ans);
+    std::cout<<"Passed! \n"; 
 
-    assert(is_sparse_matrix(vect1)== 0);
-    assert(is_sparse_matrix(vect2)== 0); 
-    assert(is_sparse_matrix(vect3)== 1);  
-    std::cout<<"all tests are passed"<<"\n";
+}
+
+void test2()
+{
+    std::vector<std::vector<int>> vect1 = {{1, 1, 1, 0}, {0, 1, 0, 2}, {1, 1, 1, 1}};
+    int expected_ans = 0;
+    int derived_ans = is_sparse_matrix(vect1);
+    std::cout<<"Test #2: ";
+    assert(derived_ans == expected_ans);
+    std::cout<<"Passed! \n"; 
+
+}
+
+void test3()
+{
+    std::vector<std::vector<int>> vect1 = {{0, 0, 0, 1}, {0, 0, 0, 2}, {0, 1, 0, 4}};
+    int expected_ans = 1;
+    int derived_ans = is_sparse_matrix(vect1);
+    std::cout<<"Test #3: ";
+    assert(derived_ans == expected_ans);
+    std::cout<<"Passed! \n"; 
 
 }
 
@@ -61,9 +81,10 @@ int main()
 {
 
     std::vector<std::vector<int>> v = {{1, 0, 0}, {0, 1, 0}, {1, 0, 1}};
-    tests();
-
-    std::cout<<is_sparse_matrix(v);
+    //tests(); //self test implementations
+    test1();
+    test2();
+    test3();
     
     return 0;
 }
