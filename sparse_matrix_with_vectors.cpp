@@ -7,13 +7,12 @@ here if zero valued elemts are more than the 50% size of the matrix, we will cal
 #include<vector>
 #include<cassert>
 
-using namespace std;
 /*
 counts the number of  zero valued elements
 check if the count is more than the half of the size of matrix
 
 */
-bool is_sparse_matrix(vector<vector<int>> vect)
+bool is_sparse_matrix(std::vector<std::vector<int>> vect)
 {
     int zero_counter = 0;
 
@@ -28,50 +27,43 @@ bool is_sparse_matrix(vector<vector<int>> vect)
         }
     }
 
-    if(zero_counter>((vect.size()* vect[0].size())/2))
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
+    return (zero_counter>(vect.size() * vect[0].size())* 0.5);
 
 }
 
-void display(vector<vector<int>> vect)
+void display(std::vector<std::vector<int>> vect)
 {
     for(int i =0; i<vect.size(); i++)
     {
         for(int j = 0; j<vect[i].size(); j++)
         {
-            cout<<vect[i][j]<<" ";
+            std::cout<<vect[i][j]<<" ";
         }
-        cout<<endl;
+        std::cout<<"\n";
     }
 
 }
 
 static void tests()
 {
-    vector<vector<int>> vect1 = {{1, 0, 0, 1}, {0, 1, 0, 2}, {1, 0, 1, 4}}; 
-    vector<vector<int>> vect2 = {{1, 1, 1, 0}, {0, 1, 0, 2}, {1, 1, 1, 1}}; 
-    vector<vector<int>> vect3 = {{0, 0, 0, 1}, {0, 0, 0, 2}, {0, 1, 0, 4}};
+    std::vector<std::vector<int>> vect1 = {{1, 0, 0, 1}, {0, 1, 0, 2}, {1, 0, 1, 4}}; 
+    std::vector<std::vector<int>> vect2 = {{1, 1, 1, 0}, {0, 1, 0, 2}, {1, 1, 1, 1}}; 
+    std::vector<std::vector<int>> vect3 = {{0, 0, 0, 1}, {0, 0, 0, 2}, {0, 1, 0, 4}};
 
     assert(is_sparse_matrix(vect1)== 0);
     assert(is_sparse_matrix(vect2)== 0); 
     assert(is_sparse_matrix(vect3)== 1);  
-    cout<<"all tests are passed"<<endl;
+    std::cout<<"all tests are passed"<<"\n";
 
 }
 
 int main()
 {
 
-    vector<vector<int>> v = {{1, 0, 0}, {0, 1, 0}, {1, 0, 1}};
+    std::vector<std::vector<int>> v = {{1, 0, 0}, {0, 1, 0}, {1, 0, 1}};
     tests();
 
-    cout<<is_sparse_matrix(v);
+    std::cout<<is_sparse_matrix(v);
     
     return 0;
 }
