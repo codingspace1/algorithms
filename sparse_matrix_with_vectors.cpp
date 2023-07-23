@@ -1,10 +1,10 @@
 /*
 This program checks if a given matrix is sparse or not
-i.e in a spaarse matrix zero valued elements are much more as compared to no zero values elements
+i.e in a sparse matrix zero valued elements are much more as compared to no zero values elements
 here if zero valued elemts are more than the 50% size of the matrix, we will call it a sparse matrix
 */
 #include<iostream> ///for I/O operations
-#include<vector>
+#include<vector>   /// for std::vector
 #include<cassert> /// for assert
 
 /*
@@ -44,6 +44,11 @@ void display(std::vector<std::vector<int>> vect)
 
 }
 
+/*******************************************************************************
+ * @brief Self-test implementation #1
+ * @returns void
+ *******************************************************************************/
+
 void test1()
 {
     std::vector<std::vector<int>> vect1 = {{1, 0, 0, 1}, {0, 1, 0, 2}, {1, 0, 1, 4}};
@@ -55,6 +60,11 @@ void test1()
 
 }
 
+/*******************************************************************************
+ * @brief Self-test implementation #2
+ * @returns void
+ *******************************************************************************/
+
 void test2()
 {
     std::vector<std::vector<int>> vect1 = {{1, 1, 1, 0}, {0, 1, 0, 2}, {1, 1, 1, 1}};
@@ -65,6 +75,10 @@ void test2()
     std::cout<<"Passed! \n"; 
 
 }
+/*******************************************************************************
+ * @brief Self-test implementation #3
+ * @returns void
+ *******************************************************************************/
 
 void test3()
 {
@@ -79,12 +93,14 @@ void test3()
 
 int main()
 {
+    /*******************************************************************************
+     * @brief Main function
+     * @returns 0 on exit
+     *******************************************************************************/
 
-    std::vector<std::vector<int>> v = {{1, 0, 0}, {0, 1, 0}, {1, 0, 1}};
-    //tests(); //self test implementations
-    test1();
-    test2();
-    test3();
+    test1();  // run self-test implementation #1
+    test2();  // run self-test implementation #2
+    test3();  // run self-test implementation #3
     
     return 0;
 }
