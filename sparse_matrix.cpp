@@ -1,9 +1,18 @@
+/*
+This program checks if a given matrix is sparse or not
+i.e in a spaarse matrix zero valued elements are much more as compared to no zero values elements
+here if zero valued elemts are more than the 50% size of the matrix, we will call it a sparse matrix
+*/
 #include<iostream>
 #include<vector>
 #include<cassert>
 
 using namespace std;
+/*
+counts the number of  zero valued elements
+check if the count is more than the half of the size of matrix
 
+*/
 bool is_sparse_matrix(vector<vector<int>> vect)
 {
     int zero_counter = 0;
