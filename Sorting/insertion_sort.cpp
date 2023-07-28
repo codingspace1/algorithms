@@ -5,12 +5,16 @@
 int main()
 {
 
-    std::vector<int> arr = {9,5,1,4,3,8,12,13,6};
+    std::vector<int> arr;
+    for(int k = 500; k>0; k--)
+    {
+        arr.push_back(k);
+    }
 
     for (int step = 1; step<arr.size(); step++)
     {
         int key = arr[step];
-        int j = arr[step-1];
+        int j = step-1;
 
         while( key<arr[j] && j>=0)
         {
