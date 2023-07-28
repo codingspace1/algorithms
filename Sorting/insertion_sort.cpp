@@ -5,32 +5,25 @@
 int main()
 {
 
-    std::vector<int> arr = {9,5,1,4,3};
+    std::vector<int> arr = {9,5,1,4,3,8,12,13,6};
 
-    for (int i= 1; i<arr.size(); i++)
+    for (int step = 1; step<arr.size(); step++)
     {
-        int sorted_array = arr[i];
-        int key = arr[i+1];
+        int key = arr[step];
+        int j = arr[step-1];
 
-        for(int j = 0; j<arr.size()-1; j++)
+        while( key<arr[j] && j>=0)
         {
-            if(sorted_array>key)
-            {
-                int temp = sorted_array;
-                sorted_array = key;
-                key = temp;
+            arr[j+1] = arr[j];
+            j = j-1;
+        }
+        arr[j + 1] = key;
 
-            }
         }
 
+    for(int i = 0; i<arr.size(); i++)
+    {
         std::cout<<arr[i]<<"\n";
-        
     }
-
-
-
-
-
-
     return 0;
 }
