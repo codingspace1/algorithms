@@ -1,11 +1,10 @@
 #include<iostream>
 #include<vector>
 
-
 int main()
 {
-
     std::vector<int> arr;
+
     for(int k = 500; k>0; k--)
     {
         arr.push_back(k);
@@ -29,5 +28,6 @@ int main()
     {
         std::cout<<arr[i]<<"\n";
     }
+    
     return 0;
 }
